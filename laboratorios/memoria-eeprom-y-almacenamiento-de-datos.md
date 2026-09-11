@@ -38,9 +38,9 @@ Una memoria es **volátil** cuando necesita alimentación eléctrica para conser
 
 Una memoria **no volátil** conserva la información incluso cuando deja de recibir energía. La EEPROM pertenece a esta segunda categoría.
 
-<figure><img src="https://2529195988-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FN1KcgI4teUFIowGXx5QB%2Fuploads%2F9tRdNNz2L1K5v6CAfJdT%2Fimage.png?alt=media&amp;token=b4c7ff67-5e6e-4653-a023-b084aa34e2c4" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (41).png" alt=""><figcaption></figcaption></figure>
 
-*Figura 1. Diferencia entre SRAM y EEPROM.*
+_Figura 1. Diferencia entre SRAM y EEPROM._
 
 | Memoria | Uso principal                       | ¿Conserva los datos? |
 | ------- | ----------------------------------- | -------------------- |
@@ -56,9 +56,9 @@ Una memoria **no volátil** conserva la información incluso cuando deja de reci
 
 El ATmega328P posee **1024 bytes de memoria EEPROM**. Las posiciones están numeradas desde la dirección `0` hasta la dirección `1023`. Cada dirección puede almacenar exactamente un byte, es decir, ocho bits.
 
-<figure><img src="https://2529195988-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FN1KcgI4teUFIowGXx5QB%2Fuploads%2FRwLAxBEwo1zAuaK8dIQF%2Fimage.png?alt=media&amp;token=0ad706ec-c208-4b8a-810b-b199f050c23a" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (42).png" alt=""><figcaption></figcaption></figure>
 
-*Figura 2. Organización de la EEPROM del ATmega328P.*
+_Figura 2. Organización de la EEPROM del ATmega328P._
 
 | Dirección | Contenido |
 | --------- | --------- |

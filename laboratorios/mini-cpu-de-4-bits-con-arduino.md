@@ -32,7 +32,7 @@ También deberá identificar la función del **Program Counter**, los registros,
 
 Nuestro sistema tendrá la siguiente estructura conceptual:
 
-<figure><img src="https://2529195988-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FN1KcgI4teUFIowGXx5QB%2Fuploads%2FJrsnLFjgEsHWOIw9Qxij%2Fimage.png?alt=media&amp;token=4bd698d6-051b-4e34-876b-1ad29a6034c5" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (8).png" alt=""><figcaption></figcaption></figure>
 
 | Elemento        | Implementación                     |
 | --------------- | ---------------------------------- |
@@ -67,7 +67,7 @@ Estos componentes se encuentran disponibles en el kit utilizado en el curso.
 
 ## 5. Construcción del circuito
 
-<figure><img src="https://2529195988-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FN1KcgI4teUFIowGXx5QB%2Fuploads%2FcX97X6l0urfzprXBvii6%2Fimage.png?alt=media&amp;token=e2aeb85c-3948-4dbb-bbf5-55cb65ba1176" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (10).png" alt=""><figcaption></figcaption></figure>
 
 ### Paso 1. Alimentar la protoboard
 
@@ -83,7 +83,7 @@ Todos los componentes compartirán la misma tierra.
 
 Coloque el 74HC595 atravesando la división central de la protoboard.
 
-<figure><img src="https://2529195988-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FN1KcgI4teUFIowGXx5QB%2Fuploads%2FLa1tFn10eW77HuLKAiFn%2Fimage.png?alt=media&amp;token=f17a1842-9654-453d-8892-7b669c95e779" alt="" width="375"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (12).png" alt="" width="375"><figcaption></figcaption></figure>
 
 Realice las siguientes conexiones:
 
@@ -221,7 +221,7 @@ Por ejemplo:
 LOAD A, 5
 ```
 
-Significa: *Cargar el valor 5 en el registro A.*
+Significa: _Cargar el valor 5 en el registro A._
 
 Nuestra memoria contendrá inicialmente:
 

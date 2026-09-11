@@ -25,7 +25,7 @@ Cuando se acerque una tarjeta al RC522, el sistema deberá obtener su UID.
 
 El flujo esperado en esta fase es:
 
-<figure><img src="https://2529195988-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FN1KcgI4teUFIowGXx5QB%2Fuploads%2FwsMNmR3lFnS2sUgRNwC5%2Fimage.png?alt=media&amp;token=c32a17a0-b8bf-4ef6-a849-7318abb96381" alt="" width="375"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (44).png" alt="" width="375"><figcaption></figcaption></figure>
 
 ### Trabajo a realizar
 

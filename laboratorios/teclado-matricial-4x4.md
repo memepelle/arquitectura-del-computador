@@ -23,7 +23,7 @@ Para este laboratorio utilizaremos:
 * Protoboard.
 * Cables de conexión.
 
-<figure><img src="https://2529195988-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FN1KcgI4teUFIowGXx5QB%2Fuploads%2FsHmJMZtbs70yM0ANv9Np%2Fimage.png?alt=media&amp;token=93f46fbd-1e1c-48e4-84bf-2817ca3abafc" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (32).png" alt=""><figcaption></figcaption></figure>
 
 ### Conexión del teclado
 
@@ -68,7 +68,6 @@ A medida que avance por el laboratorio encontrará la información necesaria par
 Copie inicialmente todo el siguiente programa en Arduino IDE:
 
 {% code overflow="wrap" %}
-
 ```cpp
 #include <Wire.h>
 #include <LiquidCrystal_I2C.h>
@@ -224,7 +223,6 @@ void loop()
     }
 }
 ```
-
 {% endcode %}
 
 ### Restricciones
@@ -259,7 +257,7 @@ Un teclado 4×4 contiene 16 teclas, pero no necesita 16 conexiones independiente
 
 Las teclas están organizadas en una matriz formada por **cuatro filas y cuatro columnas**:
 
-<figure><img src="https://2529195988-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FN1KcgI4teUFIowGXx5QB%2Fuploads%2FLBjfRXicVKPEmCScLvrt%2Fimage.png?alt=media&amp;token=15e8fb6c-aab6-464a-b86f-d33fda1ce05f" alt="" width="375"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (33).png" alt="" width="375"><figcaption></figcaption></figure>
 
 Cada tecla funciona como un interruptor que conecta una **fila** con una **columna**.
 
@@ -286,7 +284,7 @@ Posteriormente, el software interpreta esa combinación como el carácter `'6'`.
 
 Este proceso puede representarse como:
 
-<figure><img src="https://2529195988-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FN1KcgI4teUFIowGXx5QB%2Fuploads%2FGi4g3FhvZPUj3Wq1nyxS%2Fimage.png?alt=media&amp;token=a98b1705-951e-4b2c-a0f0-3422645cc421" alt="" width="375"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (34).png" alt="" width="375"><figcaption></figcaption></figure>
 
 ## Arduino Uno y ATmega328P
 
@@ -363,17 +361,17 @@ PINB
 
 Cada registro cumple una función diferente.
 
-<figure><img src="https://2529195988-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FN1KcgI4teUFIowGXx5QB%2Fuploads%2Feu2jKRQJXCgZmtisRpcH%2Fimage.png?alt=media&amp;token=5f98a243-1360-47ee-b895-b425aad5d54d" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (35).png" alt=""><figcaption></figcaption></figure>
 
 ## Operadores binarios
 
-Los registros están formados por varios bits. Normalmente no queremos modificar todos los bits de un registro. Queremos modificar **solamente determinados bits** sin alterar los demás. Para ello utilizaremos operadores **bit a bit** o *bitwise*.
+Los registros están formados por varios bits. Normalmente no queremos modificar todos los bits de un registro. Queremos modificar **solamente determinados bits** sin alterar los demás. Para ello utilizaremos operadores **bit a bit** o _bitwise_.
 
-<figure><img src="https://2529195988-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FN1KcgI4teUFIowGXx5QB%2Fuploads%2FbXSr4MmvEiRlyYo5f861%2Fimage.png?alt=media&amp;token=79532451-0082-4c6d-aeed-f7dc84b7bc52" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (36).png" alt=""><figcaption></figcaption></figure>
 
 ## Resistencia pull-up
 
-<figure><img src="https://2529195988-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FN1KcgI4teUFIowGXx5QB%2Fuploads%2FIwC5tHsouQ3fJm5p1guQ%2Fimage.png?alt=media&amp;token=1a66cad7-3f39-4430-b4f6-98b936b10f63" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (37).png" alt=""><figcaption></figcaption></figure>
 
 ### Pull-up interno del ATmega328P
 
@@ -383,7 +381,7 @@ El ATmega328P posee resistencias pull-up internas. Por ello no necesitaremos col
 
 Para poder escanear el teclado necesitamos que las filas sean las salidas y las columnas sean las entradas. ¿Por qué? Porque la CPU debe **controlar las filas** y **leer las columnas**.
 
-<figure><img src="https://2529195988-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FN1KcgI4teUFIowGXx5QB%2Fuploads%2Fv788P4xZUhUQPF6FG8K8%2Fimage.png?alt=media&amp;token=bcbf6e01-b089-4d95-a05b-186d31e896b6" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (38).png" alt=""><figcaption></figcaption></figure>
 
 Regrese vaya a la función:
 
@@ -409,7 +407,9 @@ e identifique cuáles bits deben quedar en `0` y cuáles en `1`.
 
 ## ¿Cómo encuentra la CPU una tecla?
 
-<figure><img src="https://2529195988-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FN1KcgI4teUFIowGXx5QB%2Fuploads%2FN6BN71q9Ce7emJpXiKTb%2Fimage.png?alt=media&amp;token=78f4e846-8d70-4f51-ad44-57fb3a56e9b2" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+
+
 
 ## Lectura de las columnas mediante PINx
 
@@ -521,9 +521,9 @@ Por eso `fila + 2` entonces `1 << (fila + 2)` crea una máscara para la fila que
 
 Posteriormente `~` invierte la máscara y `&=` coloca únicamente esa fila en `LOW`.
 
-### Rebote de tecla (*bounce)*
+### Rebote de tecla (_bounce)_
 
-<figure><img src="https://2529195988-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FN1KcgI4teUFIowGXx5QB%2Fuploads%2FuyGHpeD12h7TKaPZIzVy%2Fimage.png?alt=media&amp;token=eb9055e5-364b-4690-bfc3-f1f3379c6fdc" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (40).png" alt=""><figcaption></figcaption></figure>
 
 ## Complete la integración
 
@@ -734,7 +734,7 @@ En este laboratorio utilizamos un teclado matricial como dispositivo de entrada,
 
 El objetivo fue comprender el recorrido:
 
-<figure><img src="https://2529195988-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FN1KcgI4teUFIowGXx5QB%2Fuploads%2FqbFTCmPJ3VZZdIYVO8W9%2Fimage.png?alt=media&amp;token=1629a89e-51f1-41ed-9db3-a0e4b51491e5" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (39).png" alt=""><figcaption></figcaption></figure>
 
 También observamos que los registros DDRx PORTx PINx permiten controlar directamente la interfaz entre el procesador y los dispositivos externos.
 

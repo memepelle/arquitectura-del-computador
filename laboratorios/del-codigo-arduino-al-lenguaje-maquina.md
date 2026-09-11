@@ -92,7 +92,7 @@ Arduino utiliza un conjunto de herramientas para transformar nuestro programa.
 
 De forma simplificada:
 
-<figure><img src="https://2529195988-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FN1KcgI4teUFIowGXx5QB%2Fuploads%2FYR21PngOUTMyBlPZr38g%2Fimage.png?alt=media&amp;token=1f3490ed-a0f6-4d2a-b7fa-26c14905b5d0" alt="" width="375"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (13).png" alt="" width="375"><figcaption></figcaption></figure>
 
 El compilador transforma nuestro programa en instrucciones correspondientes a la arquitectura AVR utilizada por el microcontrolador.
 
@@ -217,7 +217,7 @@ Podrá encontrar líneas con una estructura similar a:
 
 Separemos sus partes:
 
-<figure><img src="https://2529195988-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FN1KcgI4teUFIowGXx5QB%2Fuploads%2FFbEotc3eQyqenMbBijlX%2Fimage.png?alt=media&amp;token=c295feab-cb29-4f89-933b-074412a81d73" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (14).png" alt=""><figcaption></figcaption></figure>
 
 La parte:
 
@@ -287,7 +287,7 @@ puede representarse byte a byte como:
 
 Acabamos de recorrer tres niveles diferentes:
 
-<figure><img src="https://2529195988-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FN1KcgI4teUFIowGXx5QB%2Fuploads%2FkV3OUmpXuPqn65G01M2n%2Fimage.png?alt=media&amp;token=4c5fbbfe-c846-4f59-aa15-074edd07e540" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (15).png" alt=""><figcaption></figcaption></figure>
 
 ## Parte 9. ¿Dónde está Von Neumann?
 
@@ -295,7 +295,7 @@ Regrese mentalmente a la arquitectura estudiada anteriormente.
 
 Cuando el programa está almacenado en el microcontrolador ocurre, de forma simplificada:
 
-<figure><img src="https://2529195988-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FN1KcgI4teUFIowGXx5QB%2Fuploads%2FL2WPtFyNMNMe3IOJ0KLS%2Fimage.png?alt=media&amp;token=6bcdb285-e397-4f6c-899f-b777af8fa8a6" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (16).png" alt=""><figcaption></figcaption></figure>
 
 El pin digital **13** del Arduino Uno está relacionado con el pin **PB5** del microcontrolador.
 
@@ -351,7 +351,7 @@ El bit 5 corresponde a **PB5**.
 
 Podemos visualizarlo como:
 
-<figure><img src="https://2529195988-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FN1KcgI4teUFIowGXx5QB%2Fuploads%2F2OeSppZDF8JY3duWYmVq%2Fimage.png?alt=media&amp;token=1003a0a6-8128-4a15-ad99-d9097c7586b3" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (18).png" alt=""><figcaption></figcaption></figure>
 
 La expresión:
 
@@ -389,7 +389,7 @@ El objetivo no es comprender todavía **cada instrucción**.
 
 El objetivo es descubrir que una misma operación puede expresarse con diferentes niveles de abstracción.
 
-<figure><img src="https://2529195988-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FN1KcgI4teUFIowGXx5QB%2Fuploads%2Frrs3LhoTPtMPbEfRU3WN%2Fimage.png?alt=media&amp;token=bb707568-4a0e-4141-be25-a60215c45aae" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (17).png" alt=""><figcaption></figcaption></figure>
 
 ## Reto Final
 

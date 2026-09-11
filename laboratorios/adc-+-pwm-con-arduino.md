@@ -13,7 +13,7 @@ En este laboratorio se estudiarán dos mecanismos importantes:
 
 Utilizando un **Arduino Uno**, un potenciómetro, un LED y una pantalla LCD 16×2 con comunicación I²C, construiremos el siguiente sistema:
 
-<figure><img src="https://2529195988-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FN1KcgI4teUFIowGXx5QB%2Fuploads%2Fx8P2V9nmxkq1ym3xOSV7%2Fimage.png?alt=media&amp;token=1102ff56-39b1-4a00-8e79-53bd46d27533" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (19).png" alt=""><figcaption></figcaption></figure>
 
 El objetivo no es únicamente controlar el brillo de un LED, sino comprender **cómo un computador recibe información del mundo físico, la representa digitalmente, la procesa y finalmente produce una salida**.
 
@@ -80,7 +80,7 @@ El problema es que el procesador trabaja internamente utilizando información di
 
 Necesitamos entonces convertir:
 
-<figure><img src="https://2529195988-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FN1KcgI4teUFIowGXx5QB%2Fuploads%2FBYewMruKue5BDS1fyEJJ%2Fimage.png?alt=media&amp;token=2ccd5748-721a-4e4d-a0ce-91886892bad9" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (20).png" alt=""><figcaption></figcaption></figure>
 
 ## ADC: Analog-to-Digital Converter
 
@@ -131,7 +131,7 @@ parece sencilla, pero internamente intervienen varios componentes del microcontr
 
 Una representación simplificada es:
 
-<figure><img src="https://2529195988-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FN1KcgI4teUFIowGXx5QB%2Fuploads%2Fe962i74LXbTXBWt3OsbY%2Fimage.png?alt=media&amp;token=5587aad4-aea1-4610-9071-5ac23f71a4bd" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (21).png" alt=""><figcaption></figcaption></figure>
 
 El resultado de la conversión no aparece mágicamente dentro de una variable de C/C++. Primero queda almacenado en **registros de hardware**.
 
@@ -147,7 +147,7 @@ Este registro permite, entre otras funciones, seleccionar **qué entrada analóg
 
 Conceptualmente:
 
-<figure><img src="https://2529195988-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FN1KcgI4teUFIowGXx5QB%2Fuploads%2FIXkdopVXwKfJKVuVtDpW%2Fimage.png?alt=media&amp;token=b466182b-c2d3-4db7-acc3-eef68ba187d5" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (22).png" alt=""><figcaption></figcaption></figure>
 
 Cuando utilizamos:
 
@@ -184,7 +184,7 @@ El ADC produce **10 bits**, pero el ATmega328P es un microcontrolador de arquite
 
 Por ello el resultado se distribuye utilizando dos registros:
 
-<figure><img src="https://2529195988-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FN1KcgI4teUFIowGXx5QB%2Fuploads%2FGGzPyp9p1mWbuasr2dbR%2Fimage.png?alt=media&amp;token=3c4e77da-b7d7-4a00-9900-92865f733190" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (23).png" alt=""><figcaption></figcaption></figure>
 
 **ADCL** significa **ADC Data Register Low**.
 
@@ -198,7 +198,7 @@ int valorADC = analogRead(A0);
 
 Por ejemplo:
 
-<figure><img src="https://2529195988-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FN1KcgI4teUFIowGXx5QB%2Fuploads%2FXEaT1PIPKrOFm5vEvhCM%2Fimage.png?alt=media&amp;token=b8ebeb73-6d1c-4a59-9550-e9032af0f3de" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (24).png" alt=""><figcaption></figcaption></figure>
 
 Esta es una distinción importante:
 
@@ -231,7 +231,7 @@ En nuestro experimento utilizaremos aproximadamente el intervalo de **0 V a 5 V*
 
 Por ejemplo:
 
-<figure><img src="https://2529195988-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FN1KcgI4teUFIowGXx5QB%2Fuploads%2FrFYgEMe6ZQz4xiKz4ACE%2Fimage.png?alt=media&amp;token=9f0a730e-0c67-4034-baf1-78ea26e9eb40" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (25).png" alt=""><figcaption></figcaption></figure>
 
 {% hint style="info" %}
 Observe algo importante: **el procesador no necesita trabajar con “2.5 V” internamente**. El ADC transforma esa magnitud física en una representación numérica que posteriormente puede ser procesada.
@@ -243,7 +243,7 @@ Un potenciómetro es una resistencia variable.
 
 Posee tres terminales:
 
-<figure><img src="https://2529195988-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FN1KcgI4teUFIowGXx5QB%2Fuploads%2FeGNNK61iFe1KECsK4BbB%2Fimage.png?alt=media&amp;token=9474cc4e-d382-4e5b-84fa-ea59624c2e9e" alt="" width="375"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (26).png" alt="" width="375"><figcaption></figcaption></figure>
 
 En nuestro circuito conectaremos:
 
@@ -284,7 +284,7 @@ Lo que Arduino modifica es el **tiempo que permanece en cada estado**.
 
 ## El LED realmente estará parpadeando
 
-<figure><img src="https://2529195988-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FN1KcgI4teUFIowGXx5QB%2Fuploads%2FJmTK9etUeR3lPrVjYdM8%2Fimage.png?alt=media&amp;token=dc610dde-9601-488b-9bdc-66248327fccd" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (27).png" alt=""><figcaption></figcaption></figure>
 
 ### Entonces, ¿por qué parece más tenue?
 
@@ -300,7 +300,7 @@ Percibimos una sensación de iluminación aproximadamente relacionada con la fra
 
 Por ejemplo:
 
-<figure><img src="https://2529195988-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FN1KcgI4teUFIowGXx5QB%2Fuploads%2Fo6DAuQ19BQGs6JZb7tNj%2Fimage.png?alt=media&amp;token=9d7fe472-0966-47c7-acc8-5d7334eddeff" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (28).png" alt=""><figcaption></figcaption></figure>
 
 ### Duty Cycle
 
@@ -328,7 +328,7 @@ Pero eso obligaría al procesador a ejecutar continuamente instrucciones para en
 
 Conceptualmente:
 
-<figure><img src="https://2529195988-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FN1KcgI4teUFIowGXx5QB%2Fuploads%2FlS9W3aAFpdFB2CCBbh7a%2Fimage.png?alt=media&amp;token=3376f30c-fc79-40f8-a962-475bdbba3dac" alt="" width="375"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (29).png" alt="" width="375"><figcaption></figcaption></figure>
 
 Una vez configurado, el temporizador puede continuar generando los pulsos sin que nuestro programa tenga que ejecutar manualmente cada transición HIGH/LOW.
 
@@ -358,7 +358,7 @@ La salida correspondiente está relacionada con **OC1A**:
 
 De manera conceptual:
 
-<figure><img src="https://2529195988-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FN1KcgI4teUFIowGXx5QB%2Fuploads%2F0FrehR83IOEZVM4QeG92%2Fimage.png?alt=media&amp;token=9a524d33-0b7d-484c-81c1-297df226ec0c" alt="" width="375"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (30).png" alt="" width="375"><figcaption></figcaption></figure>
 
 ## Registros involucrados en PWM
 
@@ -378,7 +378,7 @@ Existen varios registros asociados al Timer1. Para este laboratorio interesa com
 
 Conceptualmente:
 
-<figure><img src="https://2529195988-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FN1KcgI4teUFIowGXx5QB%2Fuploads%2FvZCRRuXCFV86PGpJceXH%2Fimage.png?alt=media&amp;token=6ab654b4-2fbb-4898-a271-1047f46cad9d" alt="" width="375"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1).png" alt="" width="375"><figcaption></figcaption></figure>
 
 La implementación concreta utilizada por el núcleo de Arduino configura estos recursos automáticamente cuando usamos sus funciones.
 
@@ -394,7 +394,7 @@ Desde C/C++, vemos una sola línea.
 
 Pero conceptualmente estamos solicitando:
 
-<figure><img src="https://2529195988-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FN1KcgI4teUFIowGXx5QB%2Fuploads%2FqgdI5pvQPZElIt1JLlAN%2Fimage.png?alt=media&amp;token=7a716405-aa00-4d4c-bfb1-a4da00858736" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
 
 Esta relación entre **software y hardware** es precisamente uno de los objetivos de Arquitectura del Computador.
 
@@ -470,7 +470,7 @@ Esto permite que el microcontrolador transmita información al LCD utilizando un
 
 ## Construcción del circuito
 
-<figure><img src="https://2529195988-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FN1KcgI4teUFIowGXx5QB%2Fuploads%2FmCUOIN9Nk5Uixj9XQjSH%2Fimage.png?alt=media&amp;token=b5322473-12cb-4824-b97c-457704870d14" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
 
 ### Potenciómetro
 
@@ -571,7 +571,7 @@ int valorADC = analogRead(POT);
 
 Podemos pensar:
 
-<figure><img src="https://2529195988-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FN1KcgI4teUFIowGXx5QB%2Fuploads%2FcPEcwRzjgLmVxHO2LlxT%2Fimage.png?alt=media&amp;token=2c48e877-05e9-4ba5-bf1d-eea16bba7291" alt="" width="375"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (4).png" alt="" width="375"><figcaption></figcaption></figure>
 
 Mientras que:
 
@@ -581,7 +581,7 @@ analogWrite(LED, valorPWM);
 
 puede visualizarse como:
 
-<figure><img src="https://2529195988-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FN1KcgI4teUFIowGXx5QB%2Fuploads%2FJuNMnylhsWzBRWDyQo8H%2Fimage.png?alt=media&amp;token=d986dab5-c74b-4936-9898-075a7a4f587e" alt="" width="375"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (5).png" alt="" width="375"><figcaption></figcaption></figure>
 
 Ahora las funciones de Arduino dejan de ser simples instrucciones abstractas: representan operaciones realizadas por hardware específico dentro del microcontrolador.
 
@@ -653,7 +653,7 @@ El LED de D9 deberá **continuar variando su brillo mediante PWM en todos los ra
 
 Ejemplo:
 
-<figure><img src="https://2529195988-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FN1KcgI4teUFIowGXx5QB%2Fuploads%2FVnHckda3tTnYk3cAvQU8%2Fimage.png?alt=media&amp;token=4aff7536-c6bf-401d-9aa9-9f9e873cd77d" alt="" width="375"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (6).png" alt="" width="375"><figcaption></figcaption></figure>
 
 {% hint style="danger" %}
 **No se proporciona el código del reto.** El estudiante deberá implementar las condiciones necesarias para determinar cada estado.
@@ -661,7 +661,7 @@ Ejemplo:
 
 ### Comparación final de las salidas
 
-<figure><img src="https://2529195988-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FN1KcgI4teUFIowGXx5QB%2Fuploads%2FrWcSBRA1sULu61o3PxKY%2Fimage.png?alt=media&amp;token=169e4d81-4c30-4274-9692-04992fb52f28" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
 
 El estudiante deberá presentar el sistema completo funcionando físicamente.
 
@@ -680,7 +680,7 @@ Deberá incluir:
 
 Durante la demostración (en vídeo), el estudiante deberá ser capaz de explicar el recorrido:
 
-<figure><img src="https://2529195988-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FN1KcgI4teUFIowGXx5QB%2Fuploads%2FFVPloEi5dWD0faOKNyTO%2Fimage.png?alt=media&amp;token=e55f75fb-dd21-424a-b45e-10d64bb0518c" alt="" width="375"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (31).png" alt="" width="375"><figcaption></figcaption></figure>
 
 ### Preguntas de comprensión
 

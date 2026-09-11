@@ -10,9 +10,9 @@ Durante los siguientes laboratorios **no será necesario reconstruir el circuito
 
 El siguiente diagrama realizado en Tinkercad muestra el alambrado base que deberá utilizarse durante el desarrollo del proyecto.
 
-<figure><img src="https://2529195988-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FN1KcgI4teUFIowGXx5QB%2Fuploads%2FkKnTBUQB4iESxow3NAuc%2Fimage.png?alt=media&amp;token=296708e2-f94b-404b-8f96-cb7b92f5278a" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (43).png" alt=""><figcaption></figcaption></figure>
 
-También encontrará un diagrama esquemático con el detalle de los pines en: <https://github.com/memepelle/arduino-security-project/blob/main/pinout.pdf>&#x20;
+También encontrará un diagrama esquemático con el detalle de los pines en: [https://github.com/memepelle/arduino-security-project/blob/main/pinout.pdf](https://github.com/memepelle/arduino-security-project/blob/main/pinout.pdf)&#x20;
 
 Es importante respetar la distribución de pines indicada en el diagrama. Los siguientes laboratorios y el programa base del proyecto asumirán que el circuito se encuentra conectado de esta manera.
 
@@ -69,7 +69,7 @@ El RC522 se comunica con el ATmega328P mediante el bus **SPI**. Por esta razón,
 
 El código inicial se encuentra disponible en el repositorio de GitHub del curso:
 
-**Código base:** <https://github.com/memepelle/arduino-security-project/tree/main/base>
+**Código base:** [https://github.com/memepelle/arduino-security-project/tree/main/base](https://github.com/memepelle/arduino-security-project/tree/main/base)
 
 Este programa contiene la estructura general del sistema, incluyendo la configuración de los dispositivos y la máquina de estados que controlará el proyecto.
 
@@ -125,7 +125,7 @@ Por ejemplo, si durante el proyecto una tarjeta RFID no es detectada, primero se
 
 El programa se encuentra disponible en el repositorio de GitHub del curso:
 
-**Código de diagnóstico:** <https://github.com/memepelle/arduino-security-project/tree/main/diagnostics>
+**Código de diagnóstico:** [https://github.com/memepelle/arduino-security-project/tree/main/diagnostics](https://github.com/memepelle/arduino-security-project/tree/main/diagnostics)
 
 {% hint style="warning" %}
 **Importante:** el programa de diagnóstico y el programa base cumplen funciones diferentes. El diagnóstico responde a la pregunta **“¿funciona correctamente el hardware?”**, mientras que `base.ino` permitirá responder **“¿funciona correctamente la lógica del sistema?”**.
