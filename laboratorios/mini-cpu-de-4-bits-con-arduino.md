@@ -67,7 +67,7 @@ Estos componentes se encuentran disponibles en el kit utilizado en el curso.
 
 ## 5. Construcción del circuito
 
-<figure><img src="../.gitbook/assets/image (10).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (9).png" alt=""><figcaption></figcaption></figure>
 
 ### Paso 1. Alimentar la protoboard
 
@@ -898,11 +898,11 @@ Finalmente responda:
 
 ## 18. Entregable 2
 
-Amplíe el conjunto de instrucciones de la CPU agregando una nueva instrucción llamada **`PLAY`**, cuya función será reproducir una nota musical mediante el **buzzer pasivo incluido en el kit**.&#x20;
+Amplíe el conjunto de instrucciones de la CPU agregando una nueva instrucción llamada **`PLAY`**, cuya función será reproducir una nota musical mediante el **buzzer pasivo incluido en el kit**.
 
-Conecte el terminal positivo del buzzer al pin **D9** del Arduino y el negativo a **GND**.&#x20;
+Conecte el terminal positivo del buzzer al pin **D9** del Arduino y el negativo a **GND**.
 
-La instrucción deberá recibir un valor entre **1 y 8**, almacenado como un dato de 4 bits, y convertirlo en la frecuencia de la nota correspondiente:&#x20;
+La instrucción deberá recibir un valor entre **1 y 8**, almacenado como un dato de 4 bits, y convertirlo en la frecuencia de la nota correspondiente:
 
 1. DO (262 Hz)
 2. RE (294 Hz)
@@ -910,9 +910,9 @@ La instrucción deberá recibir un valor entre **1 y 8**, almacenado como un dat
 4. FA (349 Hz)
 5. SOL (392 Hz)
 6. LA (440 Hz)
-7. SI (494 Hz)&#x20;
-8. DO (523 Hz)&#x20;
+7. SI (494 Hz)
+8. DO (523 Hz)
 
-Modifique el conjunto de instrucciones, el proceso de **DECODE/EXECUTE** y la memoria del programa para reconocer `PLAY` y utilizar `tone()` para generar el sonido.&#x20;
+Modifique el conjunto de instrucciones, el proceso de **DECODE/EXECUTE** y la memoria del programa para reconocer `PLAY` y utilizar `tone()` para generar el sonido.
 
-Finalmente, programe una secuencia de instrucciones que permita a la CPU **reproducir una melodía sencilla de 10 a 15 notas musicales al avanzar con el botón CLOCK**. Suba un video al portal del curso donde se reproduce la melodía programada en la CPU.&#x20;
+Finalmente, programe una secuencia de instrucciones que permita a la CPU **reproducir una melodía sencilla de 10 a 15 notas musicales al avanzar con el botón CLOCK**. Suba un video al portal del curso donde se reproduce la melodía programada en la CPU.
