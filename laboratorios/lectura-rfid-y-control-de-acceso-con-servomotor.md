@@ -14,8 +14,6 @@ El laboratorio se desarrollará en dos partes:
 - **Parte I:** soldadura, explicación y pruebas independientes del RC522 y del servomotor.
 - **Parte II:** integración de ambos dispositivos y desarrollo del reto.
 
----
-
 ## Objetivos
 
 Al completar el laboratorio, el estudiante será capaz de:
@@ -28,8 +26,6 @@ Al completar el laboratorio, el estudiante será capaz de:
 6. Controlar diferentes posiciones del servomotor SG90.
 7. Integrar un dispositivo de entrada con un actuador.
 8. Relacionar el sistema construido con el modelo de entrada, procesamiento y salida de un computador.
-
----
 
 ## Materiales
 
@@ -48,11 +44,9 @@ Al completar el laboratorio, el estudiante será capaz de:
 > [!WARNING]
 > El módulo RC522 debe alimentarse con **3.3 V**. Conectarlo directamente a 5 V puede dañarlo.
 
----
-
 # Parte I: Conocimiento y pruebas de los dispositivos
 
-## 1. Preparación y soldadura del módulo RC522
+## Preparación y soldadura del módulo RC522
 
 El módulo RC522 normalmente incluye una tira de pines sin soldar. Antes de conectarlo al Arduino será necesario soldar sus terminales.
 
@@ -70,13 +64,9 @@ Antes de energizar el circuito, el docente deberá revisar visualmente las solda
 
 Una soldadura correcta debe cubrir el punto de contacto sin formar una esfera demasiado grande ni tocar los pines vecinos.
 
----
+## ¿Qué es RFID?
 
-## 2. ¿Qué es RFID?
-
-RFID significa **Radio Frequency Identification**, o identificación por radiofrecuencia.
-
-Esta tecnología permite intercambiar información sin contacto físico entre un lector y una tarjeta o etiqueta electrónica.
+RFID significa **Radio Frequency Identification**, o identificación por radiofrecuencia. Esta tecnología permite intercambiar información sin contacto físico entre un lector y una tarjeta o etiqueta electrónica.
 
 El sistema utilizado en este laboratorio tiene dos elementos:
 
@@ -99,15 +89,9 @@ TARJETA RFID
 
 El RC522 trabaja con tarjetas sin contacto de **13.56 MHz**, compatibles con el estándar ISO/IEC 14443 tipo A y con diferentes productos de las familias MIFARE y NTAG.
 
----
+### ¿Qué es el UID?
 
-## 3. ¿Qué es el UID?
-
-UID significa **Unique Identifier**, o identificador único.
-
-Es una secuencia de bytes utilizada durante el proceso de detección, anticolisión y selección de una tarjeta.
-
-Cuando varias tarjetas se encuentran cerca del lector, el UID permite que el lector seleccione una tarjeta específica para comunicarse con ella.
+UID significa **Unique Identifier**, o identificador único. Es una secuencia de bytes utilizada durante el proceso de detección, anticolisión y selección de una tarjeta. Cuando varias tarjetas se encuentran cerca del lector, el UID permite que el lector seleccione una tarjeta específica para comunicarse con ella.
 
 Un UID puede verse de esta manera:
 
@@ -132,10 +116,7 @@ byte uidTarjeta[4] = {
   0x0F
 };
 ```
-
----
-
-## 4. ¿A qué estándar pertenece el UID?
+### ¿A qué estándar pertenece el UID?
 
 El formato del UID utilizado por estas tarjetas está definido por el estándar **ISO/IEC 14443-3**.
 
@@ -172,43 +153,23 @@ rfid.uid.uidByte[3] → 0F
 
 La documentación técnica recomienda que un lector pueda procesar UID de 4, 7 y 10 bytes.
 
----
+### ¿De dónde proviene el UID?
 
-## 5. ¿De dónde proviene el UID?
-
-Normalmente, el UID es asignado por el fabricante del circuito integrado y queda almacenado dentro de la tarjeta durante su fabricación o personalización.
-
-En los UID de **7 y 10 bytes**, el primer byte contiene un código que identifica al fabricante del chip.
+Normalmente, el UID es asignado por el fabricante del circuito integrado y queda almacenado dentro de la tarjeta durante su fabricación o personalización. En los UID de **7 y 10 bytes**, el primer byte contiene un código que identifica al fabricante del chip.
 
 Por ejemplo:
 
 ```text
 04 A3 7B 92 15 68 80
-│
-└── Código del fabricante
 ```
 
 El valor `04` corresponde a NXP Semiconductors.
 
-Los UID de cuatro bytes no necesariamente incluyen un código de fabricante. Este formato fue común en tarjetas MIFARE antiguas, pero el espacio disponible para identificadores de cuatro bytes es limitado.
+Los UID de cuatro bytes no necesariamente incluyen un código de fabricante. Este formato fue común en tarjetas MIFARE antiguas, pero el espacio disponible para identificadores de cuatro bytes es limitado. Por ello, los productos más recientes utilizan principalmente UID de siete bytes.
 
-Por ello, los productos más recientes utilizan principalmente UID de siete bytes.
+#### ¿Por qué se muestra en hexadecimal?
 
----
-
-## 6. ¿Por qué se muestra en hexadecimal?
-
-El UID no está almacenado internamente como texto hexadecimal.
-
-La tarjeta transmite una secuencia de bits que Arduino agrupa en bytes. Un byte contiene ocho bits y puede representar valores entre 0 y 255.
-
-```text
-Binario:       00000000 – 11111111
-Decimal:              0 – 255
-Hexadecimal:         00 – FF
-```
-
-El hexadecimal se utiliza porque permite representar cada byte mediante solamente dos caracteres.
+El UID no está almacenado internamente como texto hexadecimal. La tarjeta transmite una secuencia de bits que Arduino agrupa en bytes. Un byte contiene ocho bits y puede representar valores entre 0 y 255. El hexadecimal se utiliza porque permite representar cada byte mediante solamente dos caracteres.
 
 | Binario | Decimal | Hexadecimal |
 |---|---:|---:|
@@ -217,13 +178,7 @@ El hexadecimal se utiliza porque permite representar cada byte mediante solament
 | `00100001` | 33 | `21` |
 | `00001111` | 15 | `0F` |
 
-Las siguientes expresiones representan el mismo valor:
-
-```text
-10110011₂ = 179₁₀ = B3₁₆
-```
-
-En el programa se utiliza la constante `HEX` para mostrar el byte en hexadecimal:
+En el programa del laboratorio se utiliza la constante `HEX` para mostrar el byte en hexadecimal:
 
 ```cpp
 Serial.print(rfid.uid.uidByte[i], HEX);
@@ -251,14 +206,9 @@ Con la condición aparece como un byte hexadecimal completo:
 ```text
 0F
 ```
+### ¿El UID es fijo o variable?
 
----
-
-## 7. ¿El UID es fijo o variable?
-
-En la mayoría de las tarjetas utilizadas en sistemas sencillos, el UID está almacenado dentro del circuito integrado y permanece fijo.
-
-Sin embargo, no siempre debe asumirse que es permanente o verdaderamente único.
+En la mayoría de las tarjetas utilizadas en sistemas sencillos, el UID está almacenado dentro del circuito integrado y permanece fijo. Sin embargo, no siempre debe asumirse que es permanente o verdaderamente único.
 
 Existen diferentes casos:
 
@@ -274,13 +224,9 @@ Por esta razón, el nombre UID no garantiza completamente que el identificador s
 - Imposible de copiar.
 - Permanente en todos los modelos.
 
-Para este laboratorio utilizaremos el UID como identificador porque permite estudiar arreglos, bytes, memoria, comparación y toma de decisiones.
+Para este laboratorio utilizaremos el UID como identificador porque permite estudiar arreglos, bytes, memoria, comparación y toma de decisiones. Sin embargo, un sistema de seguridad real no debería autorizar el acceso utilizando solamente el UID.
 
-Sin embargo, un sistema de seguridad real no debería autorizar el acceso utilizando solamente el UID.
-
----
-
-## 8. Comunicación SPI
+## Comunicación SPI
 
 El RC522 se comunica con Arduino mediante el protocolo **SPI**, que significa *Serial Peripheral Interface*.
 
@@ -288,10 +234,10 @@ SPI utiliza varias señales:
 
 | Señal | Función |
 |---|---|
-| SCK | Reloj que sincroniza la comunicación |
-| MOSI | Datos enviados desde Arduino hacia el RC522 |
-| MISO | Datos enviados desde el RC522 hacia Arduino |
-| SS/SDA | Selecciona el dispositivo |
+| SCK | La señal SCK funciona como reloj. Sus pulsos indican cuándo debe enviarse o recibirse cada bit |
+| MOSI | MOSI significa **Master Out – Slave In** y transporta información desde el Arduino hacia el RC522|
+| MISO | MISO significa **Master In – Slave Out** y transporta información desde el RC522 hacia el Arduino|
+| SS/SDA | La señal SS permite seleccionar el dispositivo con el que Arduino desea comunicarse|
 | RST | Reinicia el RC522 |
 
 En esta comunicación, el Arduino actúa como controlador y el RC522 como periférico.
@@ -309,38 +255,7 @@ ARDUINO      ─────────►      RC522
                   SS
              ─────────►
 ```
-
-### MOSI
-
-MOSI significa:
-
-```text
-Master Out – Slave In
-```
-
-Transporta información desde el Arduino hacia el RC522.
-
-### MISO
-
-MISO significa:
-
-```text
-Master In – Slave Out
-```
-
-Transporta información desde el RC522 hacia el Arduino.
-
-### SCK
-
-La señal SCK funciona como reloj. Sus pulsos indican cuándo debe enviarse o recibirse cada bit.
-
-### SS
-
-La señal SS permite seleccionar el dispositivo con el que Arduino desea comunicarse.
-
----
-
-## 9. Conexión del RC522
+### Conexión del RC522
 
 | Pin RC522 | Arduino Uno | Función |
 |---|---:|---|
@@ -358,9 +273,7 @@ Revise todas las conexiones antes de conectar el cable USB.
 > [!CAUTION]
 > No conecte el pin de alimentación del RC522 al pin de 5 V.
 
----
-
-## 10. Instalación de la biblioteca MFRC522
+### Instalación de la biblioteca MFRC522
 
 En Arduino IDE:
 
@@ -377,10 +290,7 @@ Las bibliotecas se incluyen al inicio del programa:
 #include <SPI.h>
 #include <MFRC522.h>
 ```
-
----
-
-## 11. Prueba 1: lectura del UID
+## Prueba 1: lectura del UID
 
 El siguiente programa detecta una tarjeta y muestra su UID en el monitor serial.
 
@@ -472,13 +382,9 @@ UID detectado: B3 7A 21 0F
 > [!NOTE]
 > El UID mostrado será diferente para cada tarjeta.
 
----
+## ¿Qué es un servomotor?
 
-## 12. ¿Qué es un servomotor?
-
-Un servomotor es un actuador capaz de colocar su eje en una posición determinada.
-
-El SG90 utilizado en este laboratorio normalmente puede moverse dentro de un rango cercano a 0°–180°.
+Un servomotor es un actuador capaz de colocar su eje en una posición determinada. El SG90 utilizado en este laboratorio normalmente puede moverse dentro de un rango cercano a 0°–180°.
 
 En su interior contiene:
 
@@ -489,23 +395,9 @@ En su interior contiene:
 
 El circuito compara la posición solicitada con la posición real. Si ambas son diferentes, activa el motor hasta reducir el error.
 
-```text
-POSICIÓN SOLICITADA
-         │
-         ▼
-CIRCUITO DE CONTROL ◄──── SENSOR DE POSICIÓN
-         │                         ▲
-         ▼                         │
- MOTOR Y ENGRANAJES ───────► EJE DEL SERVO
-```
+### Señal de control del servomotor
 
----
-
-## 13. Señal de control del servomotor
-
-Arduino envía pulsos periódicos al servomotor.
-
-La duración de cada pulso representa aproximadamente la posición solicitada.
+Arduino envía pulsos periódicos al servomotor y la duración de cada pulso representa aproximadamente la posición solicitada.
 
 | Duración aproximada | Posición aproximada |
 |---:|---:|
@@ -513,21 +405,9 @@ La duración de cada pulso representa aproximadamente la posición solicitada.
 | 1.5 ms | 90° |
 | 2 ms | 180° |
 
-Los valores pueden variar ligeramente entre diferentes servomotores.
+Los valores pueden variar ligeramente entre diferentes servomotores. La señal enviada por Arduino solamente comunica la posición deseada. La alimentación eléctrica proporciona la energía necesaria para mover el motor. El servomotor recibe continuamente los pulsos y trata de mantener la posición solicitada.
 
-```text
-Pulso corto       → Posición cercana a 0°
-Pulso intermedio  → Posición cercana a 90°
-Pulso largo       → Posición cercana a 180°
-```
-
-La señal enviada por Arduino solamente comunica la posición deseada. La alimentación eléctrica proporciona la energía necesaria para mover el motor.
-
-El servomotor recibe continuamente los pulsos y trata de mantener la posición solicitada.
-
----
-
-## 14. Conexión del servomotor SG90
+### Conexión del servomotor SG90
 
 | Cable del servo | Arduino Uno | Función |
 |---|---:|---|
@@ -537,22 +417,12 @@ El servomotor recibe continuamente los pulsos y trata de mantener la posición s
 
 Para esta prueba, el servo debe estar sin carga mecánica.
 
-No fuerce manualmente su eje.
-
 > [!WARNING]
-> Un servomotor puede consumir más corriente de la que el Arduino puede proporcionar de manera estable. Para la prueba individual puede utilizarse el pin de 5 V si el servo está sin carga. Para el proyecto final se recomienda una fuente externa regulada de 5 V.
+> No fuerce manualmente su eje. Un servomotor puede consumir más corriente de la que el Arduino puede proporcionar de manera estable. Para la prueba individual puede utilizarse el pin de 5 V si el servo está sin carga. Para el proyecto final se recomienda una fuente externa regulada de 5 V.
 
-Cuando se utilice una fuente externa, su tierra debe conectarse con la tierra del Arduino:
+Cuando se utilice una fuente externa, su tierra debe conectarse con la tierra del Arduino, esto proporciona una referencia eléctrica común para interpretar correctamente la señal de control.
 
-```text
-GND FUENTE ───── GND ARDUINO
-```
-
-Esto proporciona una referencia eléctrica común para interpretar correctamente la señal de control.
-
----
-
-## 15. Prueba 2: posiciones del servomotor
+## Prueba 2: Posiciones del servomotor
 
 La biblioteca `Servo` ya está incluida en Arduino IDE.
 
@@ -601,11 +471,9 @@ const byte PUERTA_ABIERTA = 100;
 
 No es obligatorio utilizar exactamente 0° y 180°. Los ángulos deben seleccionarse de acuerdo con la geometría del mecanismo.
 
----
-
 # Parte II: integración del RFID y el servomotor
 
-## 16. Modelo de entrada, procesamiento y salida
+## Modelo de entrada, procesamiento y salida
 
 En el sistema integrado:
 
@@ -629,13 +497,9 @@ La primera integración tendrá el siguiente comportamiento:
 6. La puerta permanece abierta durante cinco segundos.
 7. El servomotor cierra la puerta.
 
-En esta primera versión, **cualquier tarjeta detectada abrirá la puerta**.
+En esta primera versión, **cualquier tarjeta detectada abrirá la puerta** y la validación del UID se implementará posteriormente como reto.
 
-La validación del UID se implementará posteriormente como reto.
-
----
-
-## 17. Flujo del programa
+## Flujo del programa
 
 ```text
 INICIO
@@ -666,10 +530,7 @@ CERRAR PUERTA
    │
    └──────────────► ESPERAR OTRA TARJETA
 ```
-
----
-
-## 18. Conexiones del sistema integrado
+## Conexiones del sistema integrado
 
 ### RC522
 
@@ -691,9 +552,7 @@ CERRAR PUERTA
 | Alimentación | 5V o fuente externa regulada |
 | Tierra | GND común |
 
----
-
-## 19. Programa integrado
+## Programa integrado
 
 ```cpp
 #include <SPI.h>
@@ -781,10 +640,7 @@ void loop()
   delay(1000);
 }
 ```
-
----
-
-## 20. Prueba de integración
+## Prueba de integración
 
 Realice las siguientes pruebas:
 
@@ -809,22 +665,13 @@ Abriendo puerta...
 Cerrando puerta...
 Acerque una tarjeta...
 ```
+# Reto: Sistema de Acceso Autorizado
 
----
+## Descripción
 
-# Reto: sistema de acceso autorizado
+Modifique el programa integrado para que el servomotor abra la puerta únicamente cuando se presente una tarjeta autorizada. El sistema deberá almacenar el UID autorizado y comparar todos sus bytes con el UID leído y el estudiante deberá utilizar el UID obtenido durante la primera prueba.
 
-## 21. Descripción
-
-Modifique el programa integrado para que el servomotor abra la puerta únicamente cuando se presente una tarjeta autorizada.
-
-El sistema deberá almacenar el UID autorizado y comparar todos sus bytes con el UID leído.
-
-El estudiante deberá utilizar el UID obtenido durante la primera prueba.
-
----
-
-## 22. Comportamiento requerido
+## Comportamiento requerido
 
 ### Tarjeta autorizada
 
@@ -845,9 +692,7 @@ Cuando se presente una tarjeta diferente, el sistema deberá:
 3. Mantener el servomotor en la posición cerrada.
 4. Regresar al estado de espera.
 
----
-
-## 23. Almacenamiento del UID autorizado
+## Almacenamiento del UID autorizado
 
 Reemplace los valores del siguiente arreglo con el UID de su tarjeta:
 
@@ -880,12 +725,9 @@ byte uidAutorizado[TAMANO_UID] = {
   0x80
 };
 ```
+## Función que deberá completar
 
----
-
-## 24. Función que deberá completar
-
-Complete la siguiente función:
+Deberá completar la siguiente función:
 
 ```cpp
 bool esTarjetaAutorizada()
@@ -904,21 +746,9 @@ bool esTarjetaAutorizada()
 }
 ```
 
-La comparación deberá analizar todos los bytes.
+La comparación deberá analizar todos los bytes, comparar solamente el primer byte no es suficiente:
 
-Comparar solamente el primer byte no es suficiente:
-
-```text
-Tarjeta A: B3 7A 21 0F
-Tarjeta B: B3 40 C2 91
-           │
-           └── Ambas comienzan con B3,
-               pero no son la misma tarjeta.
-```
-
----
-
-## 25. Integración pendiente dentro de `loop()`
+## Integración pendiente dentro de `loop()`
 
 Después de leer y mostrar el UID, utilice la función de validación:
 
@@ -950,9 +780,7 @@ COMPARAR UID
    └── NO COINCIDE ──► DENEGAR ───────► MANTENER CERRADA
 ```
 
----
-
-# Reto adicional opcional: señalización con buzzer
+# Señalización con buzzer
 
 Agregue el buzzer pasivo al sistema.
 
@@ -996,24 +824,15 @@ delay(350);
 
 El sonido deberá permitir identificar el resultado sin observar el monitor serial.
 
----
-
 # Entregables
 
 Cada pareja deberá presentar:
 
-1. Evidencia fotográfica de las soldaduras realizadas en el RC522.
-2. Captura del monitor serial mostrando el UID de su tarjeta.
-3. Video corto de la prueba independiente del servomotor.
-4. Código fuente del sistema integrado.
-5. Código fuente del reto resuelto.
-6. Video mostrando una tarjeta autorizada.
-7. Video mostrando una tarjeta no autorizada.
-8. Respuestas a las preguntas de análisis.
-
-El código deberá almacenarse en la rama correspondiente del repositorio de GitHub y mezclarse con la rama principal cuando las pruebas hayan finalizado correctamente.
-
----
+1. Captura del monitor serial mostrando el UID de su tarjeta.
+2. Código fuente del sistema integrado (.ino).
+3. Código fuente del reto resuelto (.ino).
+4. Video mostrando una tarjeta autorizada y una tarjeta no autorizada.
+5. Respuestas a las preguntas de análisis.
 
 # Preguntas de análisis
 
@@ -1036,12 +855,6 @@ El código deberá almacenarse en la rama correspondiente del repositorio de Git
 9. ¿Qué sucedería si solamente se comparara el primer byte del UID?
 
 10. Identifique la entrada, el procesamiento y la salida del sistema construido.
-
-11. ¿Por qué debe compartirse GND cuando se utiliza una fuente externa para el servo?
-
-12. ¿Por qué el UID no debe considerarse, por sí solo, un mecanismo de alta seguridad?
-
----
 
 # Conclusión
 
@@ -1069,16 +882,3 @@ MOVIMIENTO DEL SERVO
 ```
 
 Este ejercicio constituye la base del sistema final de control y seguridad. En las siguientes etapas, la identificación RFID podrá combinarse con el PIN almacenado en EEPROM, el teclado matricial, la pantalla LCD y el buzzer para implementar un proceso de autenticación más completo.
-
----
-
-# Referencias
-
-- NXP Semiconductors. *MFRC522 Standard performance MIFARE and NTAG frontend*.  
-  https://www.nxp.com/docs/en/data-sheet/MFRC522.pdf
-
-- NXP Semiconductors. *AN10927: MIFARE product and handling of UIDs*.  
-  https://www.nxp.com/docs/en/application-note/AN10927.pdf
-
-- Arduino. *Servo Library*.  
-  https://docs.arduino.cc/libraries/servo/
