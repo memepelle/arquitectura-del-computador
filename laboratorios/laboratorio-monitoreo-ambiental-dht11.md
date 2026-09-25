@@ -1,4 +1,4 @@
-# Laboratorio Monitoreo ambiental con DHT11 y LED RGB
+# Monitoreo de Temperatura con sensores con DH11
 
 ## Introducción
 
@@ -22,9 +22,10 @@ Al finalizar el laboratorio, el estudiante será capaz de:
 ## Materiales
 
 Para realizar el laboratorio se necesita:
+
 * 1 Arduino Uno, un sensor DHT11
 * 1 módulo LED RGB
-* 1 buzzer 
+* 1 buzzer
 * 1 protoboard
 * Cables de conexión
 
@@ -36,21 +37,7 @@ El kit incluye un módulo LED RGB que puede incorporar resistencias (revise que 
 
 El DHT11 es un sensor digital capaz de medir la temperatura y la humedad relativa del ambiente. En su interior contiene un elemento sensible a la humedad, un sensor de temperatura y un pequeño circuito integrado encargado de procesar las mediciones. A diferencia del potenciómetro, el LDR o el sensor LM35, el DHT11 no entrega un voltaje analógico que el Arduino deba convertir mediante el ADC. El sensor realiza internamente la medición y transmite el resultado como una secuencia de bits. Esta diferencia es importante, en un sensor analógico el microcontrolador recibe un nivel de voltaje y debe convertirlo en un valor numérico. En el DHT11, el sensor y el Arduino se comunican mediante un protocolo digital, el Arduino recibe una trama que contiene los valores de humedad y temperatura.
 
-```text
-CONDICIÓN AMBIENTAL
-         │
-         ▼
-     SENSOR DHT11
-         │
-         ▼
-CONVERSIÓN INTERNA
-         │
-         ▼
- TRAMA DIGITAL DE DATOS
-         │
-         ▼
-      ARDUINO UNO
-```
+<figure><img src="../.gitbook/assets/image (51).png" alt="" width="375"><figcaption></figcaption></figure>
 
 ### Temperatura y humedad relativa
 
@@ -72,13 +59,13 @@ El DHT11 no debe utilizarse como dispositivo de seguridad en aplicaciones reales
 
 Cuando el Arduino solicita una medición, el DHT11 responde enviando una trama digital de 40 bits, estos bits se organizan en cinco grupos.
 
-| Byte | Información |
-|---:|---|
-| 1 | Parte entera de la humedad |
-| 2 | Parte decimal de la humedad |
-| 3 | Parte entera de la temperatura |
-| 4 | Parte decimal de la temperatura |
-| 5 | Byte de comprobación |
+| Byte | Información                     |
+| ---: | ------------------------------- |
+|    1 | Parte entera de la humedad      |
+|    2 | Parte decimal de la humedad     |
+|    3 | Parte entera de la temperatura  |
+|    4 | Parte decimal de la temperatura |
+|    5 | Byte de comprobación            |
 
 En el DHT11, las partes decimales normalmente tienen poca información, ya que el sensor proporciona una resolución limitada. Aun así, el protocolo reserva estos bytes para mantener una estructura definida.
 
@@ -96,7 +83,7 @@ En este laboratorio no se programará manualmente todo el protocolo. Se utilizar
 
 Para comunicarse con el DHT11 se utilizará la biblioteca `DHT sensor library` de Adafruit. En Arduino IDE, abra el administrador de bibliotecas y busque:
 
-```text
+```
 DHT sensor library
 ```
 
@@ -116,11 +103,11 @@ Una biblioteca contiene código previamente desarrollado para realizar tareas es
 
 Algunos sensores DHT11 vienen montados sobre un pequeño módulo de tres terminales. Estas suelen estar identificadas como `S`, `+` y `-`.
 
-| DHT11 | Arduino Uno |
-|---|---|
-| S o DATA | D2 |
-| + o VCC | 5V |
-| - o GND | GND |
+| DHT11    | Arduino Uno |
+| -------- | ----------- |
+| S o DATA | D2          |
+| + o VCC  | 5V          |
+| - o GND  | GND         |
 
 Si se utiliza el componente DHT11 individual de cuatro terminales, la conexión puede requerir una resistencia `pull-up` de aproximadamente 10 kohmios entre `DATA` y 5 V. El módulo incluido en muchos kits ya contiene esta resistencia.
 
@@ -214,12 +201,12 @@ No se debe acercar fuego, líquidos ni objetos excesivamente calientes al DHT11.
 Registre al menos cinco mediciones separadas por algunos segundos:
 
 | Medición | Temperatura | Humedad |
-|---:|---:|---:|
-| 1 | | |
-| 2 | | |
-| 3 | | |
-| 4 | | |
-| 5 | | |
+| -------: | ----------: | ------: |
+|        1 |             |         |
+|        2 |             |         |
+|        3 |             |         |
+|        4 |             |         |
+|        5 |             |         |
 
 Después de completar la tabla, compare los resultados. Si las mediciones permanecen relativamente estables, el sensor probablemente está funcionando correctamente. Si aparecen errores frecuentes, se deben revisar las conexiones, la alimentación, el modelo configurado y el tiempo entre lecturas.
 
@@ -231,13 +218,13 @@ El módulo LED RGB contiene tres luces dentro de un mismo dispositivo: roja, ver
 
 En este laboratorio, los colores no se utilizarán solamente como decoración. Cada uno representará un estado lógico del sistema:
 
-| Temperatura | Estado | Color |
-|---:|---|---|
-| Menor de 20 °C | Ambiente frío | Azul |
-| Entre 20 y menos de 27 °C | Ambiente normal | Verde |
-| Entre 27 y menos de 32 °C | Temperatura elevada | Amarillo |
-| 32 °C o más | Alerta | Rojo |
-| Error de lectura | Sensor no disponible | Magenta intermitente |
+|               Temperatura | Estado               | Color                |
+| ------------------------: | -------------------- | -------------------- |
+|            Menor de 20 °C | Ambiente frío        | Azul                 |
+| Entre 20 y menos de 27 °C | Ambiente normal      | Verde                |
+| Entre 27 y menos de 32 °C | Temperatura elevada  | Amarillo             |
+|               32 °C o más | Alerta               | Rojo                 |
+|          Error de lectura | Sensor no disponible | Magenta intermitente |
 
 Los límites utilizados tienen una finalidad educativa y pueden modificarse según el ambiente donde se realice la práctica. No deben considerarse límites oficiales de seguridad.
 
@@ -246,11 +233,11 @@ Los límites utilizados tienen una finalidad educativa y pueden modificarse seg�
 Para el programa de referencia se utilizarán tres pines con capacidad PWM:
 
 | Módulo RGB | Arduino Uno |
-|---|---|
-| R | D5 |
-| G | D6 |
-| B | D10 |
-| - | GND |
+| ---------- | ----------- |
+| R          | D5          |
+| G          | D6          |
+| B          | D10         |
+| -          | GND         |
 
 Se han elegido los pines D5, D6 y D10 para evitar interferencias con la función `tone()`. En el Arduino Uno, esta función utiliza internamente el temporizador 2 y puede afectar la señal PWM de los pines D3 y D11 mientras el buzzer está activo.
 
@@ -306,34 +293,14 @@ El color amarillo se obtiene combinando rojo y verde. Se utiliza un valor menor 
 
 El programa integrado deberá leer el DHT11, interpretar la temperatura y seleccionar un estado. Después actualizará el LED RGB y el buzzer.
 
-```text
-LEER EL DHT11
-      │
-      ▼
-¿LECTURA VÁLIDA?
-      │
-  ┌───┴────┐
-  │        │
-  NO       SÍ
-  │        │
-  ▼        ▼
- ERROR   COMPARAR TEMPERATURA
-           │
-     ┌─────┼────────┬─────────┐
-     ▼     ▼        ▼         ▼
-   FRÍO  NORMAL  ELEVADA    ALERTA
-     │     │        │         │
-     ▼     ▼        ▼         ▼
-   AZUL  VERDE   AMARILLO   ROJO Y
-                              BUZZER
-```
+<figure><img src="../.gitbook/assets/image (52).png" alt=""><figcaption></figcaption></figure>
 
 ### Conexión del buzzer
 
-| Buzzer | Arduino Uno |
-|---|---|
-| Positivo | D9 |
-| Negativo | GND |
+| Buzzer   | Arduino Uno |
+| -------- | ----------- |
+| Positivo | D9          |
+| Negativo | GND         |
 
 El programa utilizará la función `tone()` para generar una señal audible. Esta función resulta apropiada para un buzzer pasivo. Si el kit contiene un buzzer activo, normalmente bastará con utilizar `digitalWrite()` para encenderlo y apagarlo.
 
@@ -472,19 +439,7 @@ El programa se encuentra dividido en funciones para separar las diferentes respo
 
 Esta organización facilita la comprensión y modificación del programa. Por ejemplo, si posteriormente se cambian los límites de temperatura, solamente será necesario modificar la función `determinarEstado()`. Si se reemplaza el LED RGB por una pantalla, se podrá cambiar `aplicarEstado()` sin alterar la lectura del sensor.
 
-```text
-ADQUISICIÓN DE DATOS
-   dht.readTemperature()
-   dht.readHumidity()
-            │
-            ▼
-PROCESAMIENTO
-   determinarEstado()
-            │
-            ▼
-CONTROL DE SALIDAS
-     aplicarEstado()
-```
+<figure><img src="../.gitbook/assets/image (53).png" alt="" width="375"><figcaption></figcaption></figure>
 
 ### Representación de estados mediante `enum`
 
@@ -522,39 +477,11 @@ Esta diferencia será importante en el proyecto final. Mientras espera una nueva
 
 El sistema construido sigue el modelo de entrada, procesamiento y salida. El DHT11 funciona como dispositivo de entrada. El ATmega328P del Arduino ejecuta las instrucciones del programa y procesa los datos. El LED RGB y el buzzer representan los dispositivos de salida.
 
-```text
-ENTRADA                  PROCESAMIENTO                   SALIDA
-
-DHT11                Arduino ATmega328P              LED RGB
-Temperatura   ─────► Lectura y comparación ─────►   Buzzer
-Humedad              Determinación de estado
-```
-
 La CPU no percibe directamente la temperatura. El DHT11 transforma esa condición física en una trama de bits. Después, el programa interpreta los bits como números y compara esos números con los límites establecidos.
 
 El funcionamiento general sigue una secuencia similar a la siguiente:
 
-```text
-SOLICITAR MEDICIÓN
-        │
-        ▼
-RECIBIR 40 BITS
-        │
-        ▼
-VALIDAR CHECKSUM
-        │
-        ▼
-OBTENER TEMPERATURA Y HUMEDAD
-        │
-        ▼
-COMPARAR CON LOS LÍMITES
-        │
-        ▼
-DETERMINAR EL ESTADO
-        │
-        ▼
-ACTUALIZAR LAS SALIDAS
-```
+<figure><img src="../.gitbook/assets/image (54).png" alt="" width="375"><figcaption></figcaption></figure>
 
 Cada una de estas operaciones se convierte en instrucciones que la CPU debe buscar en la memoria, decodificar y ejecutar. Aunque el programa utilice funciones de alto nivel, el microcontrolador finalmente trabaja con registros, posiciones de memoria, operaciones lógicas y señales eléctricas.
 
@@ -564,13 +491,13 @@ El programa integrado utiliza únicamente la temperatura para seleccionar el est
 
 El sistema deberá utilizar las siguientes condiciones:
 
-| Temperatura | Humedad | Estado |
-|---|---|---|
-| Menor de 20 °C | Cualquier valor válido | Ambiente frío |
-| De 20 a menos de 27 °C | Entre 30 % y 70 % | Ambiente normal |
+| Temperatura            | Humedad                       | Estado                  |
+| ---------------------- | ----------------------------- | ----------------------- |
+| Menor de 20 °C         | Cualquier valor válido        | Ambiente frío           |
+| De 20 a menos de 27 °C | Entre 30 % y 70 %             | Ambiente normal         |
 | De 20 a menos de 27 °C | Menor de 30 % o mayor de 70 % | Humedad fuera del rango |
-| De 27 a menos de 32 °C | Cualquier valor válido | Temperatura elevada |
-| 32 °C o más | Cualquier valor válido | Alerta |
+| De 27 a menos de 32 °C | Cualquier valor válido        | Temperatura elevada     |
+| 32 °C o más            | Cualquier valor válido        | Alerta                  |
 
 El estado `HUMEDAD_FUERA_RANGO` deberá representarse con el color celeste. Para producir este color se combinarán los canales verde y azul.
 

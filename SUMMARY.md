@@ -9,7 +9,7 @@
 * [Teclado Matricial 4x4](laboratorios/teclado-matricial-4x4.md)
 * [Memoria EEPROM y almacenamiento de datos](laboratorios/memoria-eeprom-y-almacenamiento-de-datos.md)
 * [Lectura RFID y control de acceso con servomotor](laboratorios/lectura-rfid-y-control-de-acceso-con-servomotor.md)
-* [Monitoreo de Temperatura con sencores con DH11](laboratorios/laboratorio-monitoreo-ambiental-dht11.md)
+* [Monitoreo de Temperatura con sensores con DH11](laboratorios/laboratorio-monitoreo-ambiental-dht11.md)
 
 ## Proyecto Final
 
