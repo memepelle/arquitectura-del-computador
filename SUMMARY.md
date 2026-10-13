@@ -16,4 +16,4 @@
 * [Guía de trabajo con GitHub](proyecto-final/guia-de-trabajo-con-github/README.md)
   * [Recuperación y rollback](proyecto-final/guia-de-trabajo-con-github/recuperacion-y-rollback.md)
   * [Resolución de conflictos](proyecto-final/guia-de-trabajo-con-github/resolucion-de-conflictos.md)
-* [Fase 0: Alambrado del Proyecto Final](proyecto-final/fase-0-alambrado-del-proyecto-final.md)
+* [Fase 0: Alambrado del Proyecto de Referencia](proyecto-final/fase-0-alambrado-del-proyecto-final.md)
