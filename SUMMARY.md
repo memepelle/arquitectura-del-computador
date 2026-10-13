@@ -17,4 +17,3 @@
   * [Recuperación y rollback](proyecto-final/guia-de-trabajo-con-github/recuperacion-y-rollback.md)
   * [Resolución de conflictos](proyecto-final/guia-de-trabajo-con-github/resolucion-de-conflictos.md)
 * [Fase 0: Alambrado del Proyecto Final](proyecto-final/fase-0-alambrado-del-proyecto-final.md)
-* [Fase 1: Lectura de tarjeta RFID](proyecto-final/fase-1-lectura-de-tarjeta-rfid.md)
